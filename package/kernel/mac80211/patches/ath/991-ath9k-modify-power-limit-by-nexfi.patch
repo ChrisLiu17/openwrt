@@ -1,0 +1,11 @@
+--- a/drivers/net/wireless/ath/ath9k/hw.h	2020-04-21 16:00:37.282309866 +0800
++++ b/drivers/net/wireless/ath/ath9k/hw.h	2020-04-21 16:02:17.533296789 +0800
+@@ -173,7 +173,7 @@
+ #define ATH9K_NUM_DMA_DEBUG_REGS    8
+ #define ATH9K_NUM_QUEUES            10
+ 
+-#define MAX_RATE_POWER              63
++#define MAX_RATE_POWER              74 //63, modify by liu
+ #define MAX_COMBINED_POWER          254 /* 128 dBm, chosen to fit in u8 */
+ #define AH_WAIT_TIMEOUT             100000 /* (us) */
+ #define AH_TSF_WRITE_TIMEOUT        100    /* (us) */
