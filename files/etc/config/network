@@ -1,0 +1,60 @@
+config interface 'bat0'
+    option proto 'batadv'
+    ## optional settings to override the defaults:
+    option routing_algo 'BATMAN_IV'
+    option aggregated_ogms 1
+    option ap_isolation 0
+    option bonding 0
+    option fragmentation 1
+    option gw_mode 'off'
+    #option gw_bandwidth '10000/2000'
+    #option gw_sel_class 20
+    option log_level 0
+    option orig_interval 1000
+    option bridge_loop_avoidance 1
+    option distributed_arp_table 1
+    option multicast_mode 1
+    option multicast_fanout 16
+    option network_coding 0
+    option hop_penalty 30
+    option isolation_mark '0x00000000/0x00000000'
+
+config interface 'loopback'
+	option ifname 'lo'
+	option proto 'static'
+	option ipaddr '127.0.0.1'
+	option netmask '255.0.0.0'
+
+config interface 'batnet'
+	option mtu '1536'
+	option proto 'batadv_hardif'
+	option master 'bat0'
+  option routing_algo 'BATMAN_IV'
+
+config interface 'lan'
+    option force_link '1'
+    option type 'bridge'
+    option proto 'static'
+    option ipaddr '192.168.104.254'
+    option netmask '255.255.255.0'
+    option ifname 'bat0 eth0 usb0 tap0 eth1'
+
+config interface 'wan'
+    option ifname ''#p4
+    option proto 'static'
+    option ipaddr '192.168.1.1'
+    option netmask '255.255.255.0'
+
+config interface 'wwan'
+    option proto 'dhcp'
+
+config switch
+	option name 'switch0'
+	option reset '1'
+	option enable_vlan '1'
+
+config switch_vlan
+	option device 'switch0'
+	option vlan '1'
+	option ports '0 1 2 3 4'
+
